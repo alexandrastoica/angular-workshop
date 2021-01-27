@@ -6,7 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from '../app/material.module';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from '../app/home/home.component';
+import { CoursesComponent } from '../app/courses/courses.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     HomeComponent,
+    CoursesComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
