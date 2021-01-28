@@ -1,13 +1,5 @@
-import { Icu } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
-
-interface ICourse {
-  id: number;
-  title: string;
-  description: string;
-  percentComplete: number;
-  favorite: boolean;
-}
+import { CoursesService, ICourse } from '../shared/services/courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -16,35 +8,13 @@ interface ICourse {
 })
 export class CoursesComponent implements OnInit {
   selectedCourse: ICourse = null;
-  courses: ICourse[] = [
-    {
-      id: 1,
-      title: 'Angular 9 Fundamentals',
-      description: 'Learn the fundamentals of Angular 9',
-      percentComplete: 26,
-      favorite: true
-    },
-    {
-      id: 2,
-      title: 'Javascript Fundamentals',
-      description: 'Learn the fundamentals of Javascript',
-      percentComplete: 30,
-      favorite: false
-    },
-    {
-      id: 3,
-      title: 'Component Fundamentals',
-      description:
-        'Learn the fundamentals of Angular components',
-      percentComplete: 55,
-      favorite: false
-    }
-  ];
+  courses: ICourse[] = null;
 
-  constructor() { }
+  constructor(private coursesServices: CoursesService) { }
 
   ngOnInit(): void {
     this.resetSelectedCourse();
+    this.courses = this.coursesServices.all();
   }
 
   resetSelectedCourse(): void {
@@ -63,13 +33,12 @@ export class CoursesComponent implements OnInit {
     this.selectedCourse = course;
   }
 
-  deleteCourse(id: number): void {
-    // TODO: delete course
+  deleteCourse(courseId: number): void {
+    this.coursesServices.delete(courseId);
   }
 
-  saveCourse(data) {
-    console.log('submit');
-    console.log(data);
+  saveCourse(courseData: ICourse) {
+    this.coursesServices.create(courseData);
   }
 
   cancelForm(): void {
