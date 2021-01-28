@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from '../app/material.module';
 import { HomeComponent } from '../app/home/home.component';
 import { CoursesComponent } from '../app/courses/courses.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     MaterialModule,
     HttpClientModule
   ],
