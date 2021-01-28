@@ -1,14 +1,3 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>
-      Course Outline
-    </mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-list dense>
-      <mat-list-item *ngFor="let lesson of courseLessons">
-        {{ lesson.title }}
-      </mat-list-item>
-    </mat-list>
-  </mat-card-content>
-</mat-card>
+<app-lessons-list
+  [courseLessons]="courseLessons">
+</app-lessons-list>
