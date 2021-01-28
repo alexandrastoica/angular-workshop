@@ -38,6 +38,8 @@
 
       <form #form="ngForm" (submit)="saveCourse(form.value)">
         <mat-card-content>
+          <input hidden type="number" name="id"
+            [(ngModel)]="selectedCourse.id" />
           <mat-form-field>
             <input matInput
               type="text"
@@ -78,7 +80,7 @@
             type="submit">Submit</button>
           <button mat-button
             type="button"
-            (click)="cancelForm()">Cancel</button>
+            (click)="clearForm()">Cancel</button>
         </mat-card-actions>
       </form>
     </mat-card>

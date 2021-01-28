@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+const BASE_URL = 'http://localhost:3000/';
 
 export interface ICourse {
   id: number;
@@ -12,6 +16,7 @@ export interface ICourse {
   providedIn: 'root'
 })
 export class CoursesService {
+  private model = 'courses';
   private courses: ICourse[] = [
     {
       id: 1,
@@ -37,25 +42,33 @@ export class CoursesService {
     }
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  all(): ICourse[] {
-    return this.courses;
+  all(): Observable<ICourse[]> {
+    return this.http.get<ICourse[]>(this.getUrl);
   }
 
   find(courseId: number) {
-    // TODO: find course
+    return this.http.get(this.getUrlById(courseId));
   }
 
-  create(course: ICourse) {
-    // TODO: create course
+  create(course: ICourse): Observable<ICourse> {
+    return this.http.post<ICourse>(this.getUrl, course);
   }
 
-  update(course: ICourse) {
-    // TODO: update course
+  update(course: ICourse): Observable<ICourse> {
+   return this.http.put<ICourse>(this.getUrlById(course.id), course);
   }
 
   delete(courseId: number) {
-    // TODO: delete course
+    return this.http.delete(this.getUrlById(courseId));
+  }
+
+  private get getUrl() {
+    return `${BASE_URL}${this.model}`;
+  }
+
+  private getUrlById(id: number) {
+    return `${this.getUrl}/${id}`;
   }
 }
