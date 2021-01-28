@@ -7,9 +7,19 @@
           </mat-card-title>
       </mat-card-header>
       <mat-card-content>
-
-          <!-- COURSES LIST -->
-
+        <mat-list>
+          <mat-list-item
+            *ngFor="let course of courses"
+            (click)="selectCourse(course)">
+            <h3 matLine>{{course.title}}</h3>
+            <p matLine>{{course.description}}</p>
+            <button mat-icon-button
+              color="warn"
+              (click)="deleteCourse(course.id);$event.stopImmediatePropagation()">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
       </mat-card-content>
       </mat-card>
   </div>
@@ -22,6 +32,7 @@
               </mat-card-title>
           </mat-card-header>
           <mat-card-content>
+            <h3 *ngIf="selectedCourse">{{selectedCourse.title}}</h3>
 
           <!-- COURSE FORM -->
 
