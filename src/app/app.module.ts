@@ -10,6 +10,8 @@ import { HomeComponent } from '../app/home/home.component';
 import { CoursesComponent } from '../app/courses/courses.component';
 import { FormsModule } from '@angular/forms';
 import { LessonsService } from './shared/services/lessons.service';
+import { CoursesListComponent } from './courses/courses-list/courses-list.component';
+import { CourseDetailsComponent } from './courses/course-details/course-details.component';
 
 @NgModule({
   imports: [
@@ -24,6 +26,8 @@ import { LessonsService } from './shared/services/lessons.service';
     AppComponent,
     HomeComponent,
     CoursesComponent,
+    CoursesListComponent,
+    CourseDetailsComponent,
   ],
   providers: [
     CoursesComponent,
