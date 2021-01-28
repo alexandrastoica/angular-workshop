@@ -38,7 +38,11 @@ export class CoursesComponent implements OnInit {
   }
 
   saveCourse(courseData: ICourse) {
-    this.coursesServices.create(courseData);
+    if (courseData.id) {
+      this.coursesServices.update(courseData);
+    } else {
+      this.coursesServices.create(courseData);
+    }
   }
 
   cancelForm(): void {
