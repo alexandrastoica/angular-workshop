@@ -14,13 +14,22 @@
   <button class="login" mat-mini-fab>
     <mat-icon>person</mat-icon>
   </button>
-  </mat-toolbar>
+</mat-toolbar>
 
-  <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" opened class="app-sidenav">
-  </mat-sidenav>
+<mat-sidenav-container>
+<mat-sidenav #sidenav mode="side" class="app-sidenav">
+  <mat-nav-list>
+    <mat-list-item
+      *ngFor="let link of links"
+      routerLinkActive="selected"
+      [routerLink]="link.path">
+      <mat-icon>{{link.icon}}</mat-icon>
+      <p matLine>{{ link.title }}</p>
+   </mat-list-item>
+  </mat-nav-list>
+</mat-sidenav>
 
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
-  </mat-sidenav-container>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+</mat-sidenav-container>
