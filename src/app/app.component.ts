@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface ILink {
   path: string;
@@ -18,5 +19,9 @@ export class AppComponent {
     { path: '/courses', icon: 'view_list', title: 'Courses' },
   ];
 
-  constructor() {}
+  constructor(private router: Router) {}
+
+  logout(): void {
+    this.router.navigateByUrl('/login');
+  }
 }
